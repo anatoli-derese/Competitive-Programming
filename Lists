@@ -1,0 +1,24 @@
+if __name__ == '__main__':
+    N = int(input())
+    new_list = []
+    for _ in range(N):
+        commands = input().split()
+        command = commands[0]
+        if command == 'insert':
+            pos = int(commands[1])
+            val = int(commands[2])
+            new_list.insert(pos, val)
+        elif command == 'print':
+            print(new_list)
+        elif command == 'append':
+            val = int(commands[1])
+            new_list.append(val)
+        elif command == 'remove':
+            val = int(commands[1])
+            new_list.remove(val)
+        elif command == 'sort':
+            new_list.sort()
+        elif command == 'pop':
+            new_list.pop()
+        elif command == 'reverse':
+            new_list = new_list[::-1]
