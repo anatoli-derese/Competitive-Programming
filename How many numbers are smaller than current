@@ -1,0 +1,19 @@
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        x= nums.copy()
+        x.sort(reverse=True)
+        y=x.copy()
+        ans =[]
+        dict ={}
+        while len(x) > 0:
+            ans.append(len(x)-x.count(x[0]))
+            x.pop(0)
+            
+        for i in range(len(ans)):
+            dict[y[i]]= ans[i]
+
+        print(dict)
+        realAns =[]
+        for num in nums:
+            realAns.append(dict[num])
+        return realAns
