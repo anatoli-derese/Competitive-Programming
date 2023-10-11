@@ -1,0 +1,20 @@
+class Solution:
+    def findKthBit(self, n: int, k: int) -> str:
+        ans = ["0"]
+        def inverse (x):
+            ans = ""
+            for n in x:
+                if n == "1":
+                    ans += "0"
+                else:
+                    ans += "1"
+            return ans
+        for i in range(n):
+            if i == 0:
+                continue
+            rev = inverse(ans[i-1])
+            rev = rev[::-1]
+            temp = ans[i-1] + "1" + rev
+            ans.append(temp)
+        return ans[n-1][k-1]
+            
