@@ -1,0 +1,14 @@
+class Solution:
+    def judgeSquareSum(self, c: int) -> bool:
+        sqs = [i**2 for i in range(int(c**0.5)+1)]
+        left, right = 0 , len(sqs) - 1
+        while left <= right:
+            temp = sqs[left] + sqs[right]
+            if temp == c:
+                return True
+            if temp > c:
+                right -=1
+            else:
+                left +=1
+        return False
+        
