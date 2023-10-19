@@ -1,0 +1,24 @@
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        l = 0
+        ans =[]
+        target = defaultdict(int)
+        window = defaultdict(int)
+        if len(p) >len(s):
+            return []
+        for i in range(len(p)):
+            target[p[i]] +=1
+            window[s[i]] +=1
+        if target == window:
+            ans.append(0)
+        while l < len(s) - len(p):
+            if window[s[l]] -1 == 0:
+                del window[s[l]]
+            else:
+                window[s[l]] -=1
+            window[s[l+len(p)]] +=1
+            l += 1
+            if target == window:
+                ans.append(l)
+        return ans
+        
