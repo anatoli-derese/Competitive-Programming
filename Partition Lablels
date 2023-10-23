@@ -1,0 +1,16 @@
+from collections import defaultdict
+def partitionLabel(s):
+    d = defaultdict(int)
+    temp =set()
+    for i in range(len(s)):
+        d[s[i]] =i
+    size, end = 0,0
+    ans =[]
+    for i in range(len(s)):
+        size +=1
+        end = max(end,d[s[i]])
+        if i == end:
+            ans.append(size)
+            size =0
+
+    print(ans)
