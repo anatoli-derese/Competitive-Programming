@@ -1,0 +1,23 @@
+class Solution:
+    def compress(self, chars: List[str]) -> int:
+        s = chars[0]
+        size = 0
+        if len(chars) == 1:
+            return 1
+        for i,c in enumerate(chars):
+            if s[-1] == c:
+                size +=1
+            else:
+                if size != 1:
+                    s += str(size)
+                    size = 1
+                s += c
+        if size !=1:
+            s += str(size)
+        for i,c in enumerate(s):
+            chars[i] = c
+        now, last = len(s) , len(chars)
+        for i in range(now,last):
+            chars.pop()
+        return len(chars)
+        
