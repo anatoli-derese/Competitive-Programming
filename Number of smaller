@@ -1,0 +1,9 @@
+import bisect
+m,n = map(int,input().split(" "))
+nums1 =  list(map(int, input().split(" ")))
+nums2 =  list(map(int, input().split(" ")))
+ans = []
+for p2 in nums2:
+    ans.append(bisect.bisect_left(nums1,p2))
+for a in ans:
+    print(a,end=" ")
