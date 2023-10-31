@@ -1,0 +1,14 @@
+lass Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        list1, list2 =[1],[1]
+        for i in range(len(nums)):
+            list1.append(list1[-1]* nums[i])
+        for i in range(len(nums)-1,0,-1):
+            list2.append((list2[-1]* nums[i]))
+        list2 = list2[::-1]
+        list1.pop()
+        print(list1,list2)
+        ans =[]
+        for j in range(len(list1)):
+            ans.append(list1[j]* list2[j])
+        return ans
