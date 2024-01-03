@@ -1,0 +1,17 @@
+class Solution:
+    def dividePlayers(self, skill: List[int]) -> int:
+        skill.sort()
+        temp = skill[0] + skill[len(skill) - 1]
+        ans = [[]]
+        while len(skill) > 0:
+            first, last = skill.pop(0) , skill.pop(len(skill)-1)
+            curr = first + last
+            if temp != curr:
+                return -1
+            ans.append([first,last])
+        ans.pop(0)
+        chem = 0
+        for gp in ans:
+            chem += gp[0] * gp[1]
+        return chem
+        
