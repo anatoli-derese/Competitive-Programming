@@ -1,14 +1,17 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        start,end, longest = 0, 0 ,0
-        ans =[]
-        while end < len(s):
-            if s[end] not in ans:
-                ans.append(s[end])
-                longest = max(longest,end-start + 1 )
-                end += 1
-            else:
-                ans.pop(0)
-                start +=1
-                longest = max(longest, end - start+1)
-        return longest
+        size = 0
+        window = defaultdict(int)
+        i,j = 0,0
+        while j < len(s):
+            window[s[j]] +=1
+            while window[s[j]] > 1:
+                window[s[i]] -=1
+                i +=1
+            size = max(size, j-i+1)
+            j +=1
+        
+        return size
+            
+
+        
