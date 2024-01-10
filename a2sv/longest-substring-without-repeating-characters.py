@@ -10,7 +10,6 @@ class Solution:
                 i +=1
             size = max(size, j-i+1)
             j +=1
-        
         return size
             
 
