@@ -1,0 +1,12 @@
+class Solution:
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
+        remainders = defaultdict(int)
+        remainders[0]=1
+        prev = 0
+        ans = 0
+        for num in nums:
+            prev += num
+            ans += remainders[prev % k]
+            remainders[prev % k] +=1
+        return ans
+            
