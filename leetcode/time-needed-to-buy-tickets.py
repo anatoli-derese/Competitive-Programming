@@ -1,16 +1,20 @@
 class Solution:
     def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
-        time = 0
-        pointer = k
-        while tickets[pointer] != 0:
-            if tickets[0] == 0:
-                temp = tickets.pop(0)
-                tickets.append(temp )
+        ans = 0
+        for i , num in enumerate(tickets):
+            if i <= k:
+                if num < tickets[k]:
+                    ans += num
+                else:
+                    ans += tickets[k]
             else:
-                temp = tickets.pop(0)
-                tickets.append(temp - 1)
-                time +=1
-                if pointer == 0:
-                    pointer = len(tickets)
-            pointer -=1
-        return time
+                if num <= tickets[k]-1:
+                    ans += num
+                else:
+                    ans += tickets[k] -1
+        return ans
+
+                
+            
+
+        
