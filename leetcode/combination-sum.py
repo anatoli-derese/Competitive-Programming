@@ -3,23 +3,19 @@ class Solution:
         self.ans = []
         candidates.sort()
         self.visited = set()
-        def backtrack(path, tot, vis):
+        def backtrack(path, tot, i):
             if tot == target:
-                if tuple(sorted(vis)) not in self.visited:
-                    self.ans.append(path[:])
-                    self.visited.add(tuple(sorted(vis)))
+                self.ans.append(path[:])
                 return
             else:
-                for i in range(len(candidates)):
-                    tot += candidates[i]
+                for j in range(i,len(candidates)):
+                    tot += candidates[j]
                     if tot > target:
-                        return
-                    vis.append(i)
-                    path.append(candidates[i])
-                    backtrack(path, tot,vis)
-                    vis.pop()
-                    tot -= candidates[i]
+                        return 
+                    path.append(candidates[j])
+                    backtrack(path, tot, j)
+                    tot -= candidates[j]
                     path.pop()
-        backtrack([],0,[])
+        backtrack([],0,0)
         return self.ans
         
